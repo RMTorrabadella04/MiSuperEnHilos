@@ -59,14 +59,17 @@ public class Caja implements Runnable {
 
     @Override
     public void run() {
-
+        // Para medir el tiempo que tarda en realizar la compra
+        long initialTime = System.currentTimeMillis();
         for (int i = 0; i < this.clientes.length; i++) {
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            System.out.println("En la "+this.getNombreCaja()+": El cliente " + this.clientes[i].getNombre() + " ha comprado " + this.clientes[i].getCarrito()+"\n");
+            // Luego realizamos la resta para ver cuanto tiempo ha transcurrido
+            long tiempoTranscurrido = System.currentTimeMillis() - initialTime;
+            System.out.println("En la "+this.getNombreCaja()+": El cliente " + this.clientes[i].getNombre() + " ha comprado " + this.clientes[i].getCarrito()+ " en " + tiempoTranscurrido + " ms"+"\n");
         }
 
     }
