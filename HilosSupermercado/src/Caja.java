@@ -1,14 +1,13 @@
 import java.util.Random;
 
-public class Caja {
-
+public class Caja implements Runnable {
     String nombreCaja;
-
     Cliente[] clientes;
 
     // Constructor
 
     public Caja(String nombreCaja) {
+
         this.nombreCaja = nombreCaja;
         this.crearClientes();
     }
@@ -58,4 +57,17 @@ public class Caja {
 
     }
 
+    @Override
+    public void run() {
+
+        for (int i = 0; i < this.clientes.length; i++) {
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println("En la "+this.getNombreCaja()+": El cliente " + this.clientes[i].getNombre() + " ha comprado " + this.clientes[i].getCarrito()+"\n");
+        }
+
+    }
 }

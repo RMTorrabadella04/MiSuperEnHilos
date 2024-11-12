@@ -1,8 +1,7 @@
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Cliente {
-
+public class Cliente{
     String nombre;
     ArrayList<String> carrito = new ArrayList<>();
 

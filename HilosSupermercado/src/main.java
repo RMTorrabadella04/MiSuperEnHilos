@@ -12,9 +12,16 @@ public class main {
         System.currentTimeMillis() - this.initialTime
      */
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
+        Thread caja1 = new Thread(new Caja("Caja 1"));
+        Thread caja2 = new Thread(new Caja("Caja 2"));
 
+        caja1.start();
+        caja2.start();
+
+        caja1.join();
+        caja2.join();
 
     }
 }
